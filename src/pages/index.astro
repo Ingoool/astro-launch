@@ -1,5 +1,6 @@
 ---
-
+const pageTitle = "Homepage";
+const items = ["Dog", "Cat", "Platypus"];
 ---
 
 <html lang="en">
@@ -9,13 +10,34 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
 	<a href="/">Home</a>
 	<a href="/about/">About</a>
 	<a href="/blog/">Blog</a>
 
-		<h1>Astro-launch</h1>
+		<h1>{pageTitle}</h1>
+
+	<p>Some dynamic tests:</p>
+
+<!-- HTML comment syntax is valid in .astro files -->
+{/* JS comment syntax is also valid - but will not be seen in DOM */}
+
+
+	<button id="button">Click Me</button>
+	<script>
+	function handleClick () {
+		console.log("button clicked!");
+	}
+	document.getElementById("button")?.addEventListener("click", handleClick);
+	</script>
+
+	<ul>
+	{items.map((item) => (
+		<li>{item}</li>
+	))}
+	</ul>
+
 	</body>
 </html>
