@@ -1,5 +1,6 @@
 ---
-import Navigation from '../components/Navigation.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 const pageTitle = "Homepage";
 const items = ["Dog", "Cat", "Platypus"];
@@ -16,7 +17,7 @@ const items = ["Dog", "Cat", "Platypus"];
 	</head>
 	<body>
 	
-		<Navigation />
+		<Header />
 
 		<h1>{pageTitle}</h1>
 
@@ -40,5 +41,9 @@ const items = ["Dog", "Cat", "Platypus"];
 	))}
 	</ul>
 
+	<Footer />
+	<script>
+		import "../scripts/menu.js";
+	</script>
 	</body>
 </html>
