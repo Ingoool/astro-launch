@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Greeting from '../components/Greeting';
 const pageTitle = "Home Page";
 const description = "This is my home page for my new Astro site.";
 
@@ -8,6 +9,7 @@ const items = ["Dog", "Cat", "Platypus"];
 <BaseLayout pageTitle={pageTitle} description={description}>
 
   	<h2>My awesome blog subtitle</h2>
+	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 
   	<p>Some dynamic tests:</p>
 <!-- HTML comment syntax is valid in .astro files -->
