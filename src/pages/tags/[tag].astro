@@ -9,16 +9,17 @@ export async function getStaticPaths() {
   const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 
   return uniqueTags.map((tag) => {
+    const slug = tag.replace(/\s+/g, '-').toLowerCase();
     const filteredPosts = allPosts.filter((post) => post.data.tags.includes(tag));
     return {
-      params: { tag },
-      props: { posts: filteredPosts },
+    params: { tag: slug },
+    props: { posts: filteredPosts, tag }, // pass original tag in props
     };
   });
 }
 
-const { tag } = Astro.params;
-const { posts } = Astro.props;
+
+const { posts, tag } = Astro.props;
 ---
 <BaseLayout pageTitle={tag}>
   <p>Posts tagged with {tag}</p>

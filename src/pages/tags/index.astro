@@ -12,17 +12,16 @@ const description = "all my tags on this site.";
 <BaseLayout pageTitle={pageTitle} description={description}>
 
   <div class="tags">
-    {tags.map((tag) => (
-      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
-    ))}
+    {tags.map((tag: string) => {
+    const slug = encodeURIComponent(tag.replace(/\s+/g, '-').toLowerCase());
+    return <p class="tag"><a href={`/tags/${slug}`}>{tag}</a></p>;
+    })}
   </div>
 
-  
-</BaseLayout>   
-
-<style>
+  <style>
   a {
     color: #00539F;
+    text-decoration: none;
   }
 
   .tags {
@@ -39,4 +38,7 @@ const description = "all my tags on this site.";
     background-color: #F8FCFD;
   }
 </style>
+</BaseLayout>   
+
+
 
